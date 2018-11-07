@@ -1,0 +1,47 @@
+#div0{
+    border: 1px solid black;
+    margin: 10px;
+    width:500px;
+    padding: 2%;
+}
+.div1 {
+    border: 1px solid black;
+    margin: 10px;
+    padding:5px;
+}
+.div2{
+    border: 1px solid black;
+    margin:10px;
+    padding:5px;
+}
+.div3{
+    border: 1px solid black;
+    margin:10px;
+    padding:5px;
+}
+.div4{
+    border: 1px solid black;
+    margin:10px;
+    height: 200px;
+    padding:5px;
+}
+
+.div5{
+    border: 1px solid black;
+    margin:10px;
+    width:70%;
+    height:60%;
+    text-align: center;
+}
+.application {
+    position: relative;
+    top:-30px;
+    background-color: white;
+    width: 180px;
+}
+.question1{
+    position: relative;
+    top:-12px;
+    background-color: white;
+    width: 135px;
+}

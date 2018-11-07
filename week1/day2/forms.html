@@ -1,0 +1,53 @@
+<html>
+    <head></head>
+    <body>
+        <form action="/save-data" method="POST">
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username">
+
+            <br>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+
+            <br>
+
+            <input type="checkbox" id="StaySignIn" name="StaySignIn">
+            <label for="StaySignIn">Stay Sign In</label>
+
+            <br>
+
+            <button type="submit">Log in</button>
+        </form>
+
+        <h1> Sign up</h1>
+
+        <form action="/signup" method="POST">
+            <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="country">Country</label>
+        <select name="country" id="country">
+            <option value="hun">Hungry</option>
+            <option value="="china>China</option>
+        </select>
+
+        <br>
+
+        <input type="radio" name="education" value="primary school"id="primary school">
+        <label for="primary school">Primary School</label>
+        <br>
+        <input type="radio" name="education" value="secondary school" id="secondary school">
+        <label for="secondary school">Secondary School</label>
+        <br>
+        <input type="radio" name="education" value="colledge"id="colledge">
+        <label for="colledge">Colledge</label>
+        <br>
+        <input type="radio" name="education" value="university"id="university">
+        <label for="university">University</label>
+        <br>
+        <button type="submit">Sign up</button>
+
+        </form>
+    </body>
+</html>
