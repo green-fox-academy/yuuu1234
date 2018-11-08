@@ -1,4 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks.Dataflow;
 
 namespace program5
@@ -60,7 +63,7 @@ namespace program5
             int number1 = int.Parse(Console.ReadLine());
             int number2 = int.Parse(Console.ReadLine());
             int bigger = (number1 > number2) ? number1 : number2;
-            Console.WriteLine("The bigger one is:",bigger);
+            Console.WriteLine("The bigger one is:"+bigger);
 
             //excercise 22
             double a = 24;
@@ -133,7 +136,115 @@ namespace program5
             }
             Console.WriteLine(out3);
 
+            //excercise 29
+            // Write a program that reads a number from the standard input, then draws a
+            // pyramid like this:
             //
+            //
+            //    *
+            //   ***
+            //  *****
+            // *******
+            //
+            // The pyramid should have as many lines as the number was
+            Console.WriteLine("Please enter a number");
+            int level1 = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= level1; i++)
+            {
+
+                for (int k = 1; k <= level1 - i; k++)
+                {
+                    Console.Write(" ");
+                }
+
+
+                for (int j = 1; j <= 2 * i - 1; j++)
+                {
+                    Console.Write("*");
+
+                }
+                Console.WriteLine();
+            }
+
+            //excercise 30
+            // Write a program that reads a number from the standard input, then draws a
+            // diamond like this:
+            //
+            //
+            //    *
+            //   ***
+            //  *****
+            // *******
+            //  *****
+            //   ***
+            //    *
+            //
+            // The diamond should have as many lines as the number was
+            Console.WriteLine("Please enter a number");
+            int level3 = int.Parse(Console.ReadLine());
+           
+
+
+            //excercise 31
+            // Write a program that reads a number from the standard input, then draws a
+            // square like this:
+            //
+            //
+            // %%%%%%
+            // %    %
+            // %    %
+            // %    %
+            // %    %
+            // %%%%%%
+            //
+            // The square should have as many lines as the number was
+            Console.WriteLine("Please enter a number");
+            int level2 = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= level2; i++)
+            {
+                string output = "";
+                if (i == 1 || i == level2)
+                {
+                    for(int j= 1; j <= level2; j++)
+                    {
+                        output += "%";
+                    }
+                }
+                else
+                {
+                    for (int m = 1; m <= level2; m++)
+                    {
+                        output = (m == 1 || m == level2) ? output += "%" : output += " ";
+                    }
+
+                }
+                Console.WriteLine(output);
+
+            }
+
+            //excercise 34
+            // Write a program that asks for a number.
+            // It would ask this many times to enter an integer,
+            // if all the integers are entered, it should print the sum and average of these
+            // integers like:
+            //
+            // Sum: 22, Average: 4.4
+            int count =5;
+            int length1 = count;
+            int sum2=0, average2,number3;
+            while (count > 0)
+            {
+                Console.WriteLine("Please enter a number");
+                number3 = int.Parse(Console.ReadLine());
+                sum2 += number3;
+                count -= 1;
+                
+            }
+
+            average = sum2 / length1;
+            Console.WriteLine("The sum is {0} and the average is{1}",sum,average);
+
+
         }
     }
 }
