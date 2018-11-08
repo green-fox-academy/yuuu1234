@@ -1,47 +1,31 @@
-#div0{
-    border: 1px solid black;
-    margin: 10px;
-    width:500px;
-    padding: 2%;
+.applicationForm {
+    border: 1px solid;
+    width:50%;
+    height:500px;
+    margin: 0 auto;
+    
 }
-.div1 {
-    border: 1px solid black;
-    margin: 10px;
-    padding:5px;
-}
-.div2{
-    border: 1px solid black;
-    margin:10px;
-    padding:5px;
-}
-.div3{
-    border: 1px solid black;
-    margin:10px;
-    padding:5px;
-}
-.div4{
-    border: 1px solid black;
-    margin:10px;
-    height: 200px;
-    padding:5px;
-}
-
-.div5{
-    border: 1px solid black;
-    margin:10px;
-    width:70%;
-    height:60%;
-    text-align: center;
-}
-.application {
-    position: relative;
-    top:-30px;
+h3  {
+    padding:-3px;
+    width: fit-content;
     background-color: white;
-    width: 180px;
+    margin:3%;
+    position: relative;
+    top:-6%;
 }
 .question1{
     position: relative;
-    top:-12px;
+    top:-22px;
+    width: fit-content;
     background-color: white;
-    width: 135px;
+}
+.divname {
+    border:1px solid;
+    margin:3%;
+    
+    
+}
+#name {
+    margin:5%;
+
 }
