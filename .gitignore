@@ -320,4 +320,6 @@ OpenCover/
 ASALocalRun/
 
 # MSBuild Binary and Structured Log
+
 *.binlog
+
