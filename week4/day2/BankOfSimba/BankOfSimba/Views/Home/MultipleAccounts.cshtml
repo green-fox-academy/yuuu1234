@@ -1,0 +1,64 @@
+﻿
+@using BankOfSimba.Models.BankOfSimba
+@using Microsoft.EntityFrameworkCore.Internal
+@model IEnumerable<BankAccount>
+<head>
+    <style>
+        table, tr, th, td {
+            border: 1px solid black
+        }
+
+        .King {
+            background-color: orange;
+            font-style: italic
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <tr>
+        <th>index</th>
+        <th>name</th>
+        <th>balance</th>
+        <th>Animal Type</th>
+        <th>King</th>
+        <th>Public Image</th>
+        @foreach (var account in Model)
+        {
+            if (account.King ==true)
+            {
+                <tr class="King">
+                    <td>@Model.IndexOf(account)</td>
+                    <td>@account.Name</td>
+                    <td>@account.Balance @account.Currency</td>
+                    <td>@account.AnimalType</td>
+                    <td>@account.King</td>
+                    <td  style="color: red">@account.PersonalImage</td>                   
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@Model.IndexOf(account)</td>
+                    <td>@account.Name</td>
+                    <td>@account.Balance @account.Currency</td>
+                    <td>@account.AnimalType</td>
+                    <td>False</td>
+                    @if (account.PersonalImage == "Good")
+                    {
+                        <td style="color: red">@account.PersonalImage</td>
+                    }
+                    else
+                    {
+                        <td>@account.PersonalImage</td>
+                    }
+                    
+                </tr>
+            }
+
+        }
+
+    </tr>
+</table>
+</body>

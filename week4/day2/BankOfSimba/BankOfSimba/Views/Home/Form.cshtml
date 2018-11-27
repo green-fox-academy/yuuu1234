@@ -1,0 +1,14 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using BankOfSimba.Models.BankOfSimba
+@using Microsoft.EntityFrameworkCore.Internal
+@model IEnumerable<BankAccount>
+<h2 style="color: blueviolet">welcome to raise the animal</h2><br />
+<h3 style="color: blueviolet">Please choose an animal you want to raise</h3>
+<form asp-controller="Home" method="post" asp-action="RaiseAccount">
+    @foreach (var a in Model)
+    {
+        <input type="radio" name="animal" id=@a.Name value=@a.Name>@a.Name<br />
+    }
+    <button type="submit">Submit</button>
+</form>
+

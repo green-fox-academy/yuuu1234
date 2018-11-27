@@ -1,0 +1,17 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using BankOfSimba.Models.BankOfSimba
+@model BankAccount
+<h2 style="color: blueviolet">welcome to the bank of Simba</h2><br />
+<h3 style="color: blueviolet">Please fill the new account</h3>
+
+<form asp-controller="Home" method="post" asp-action="AddAccount">
+    Name:  <input asp-for="Name" /> <br />
+    Balance: <input asp-for="Balance" /><br />
+    Type: <input asp-for="AnimalType" /><br />
+    Image: <input type="radio" asp-for="PersonalImage" value="Good" />Good <input type="radio" asp-for="PersonalImage" value="Bad" />Bad <br />
+    King:  <input type="radio" asp-for="King"  Value="true"/>true <input type="radio" asp-for="King" value="false"/>false <br />
+
+    <button type="submit">Add</button>
+
+</form>
+
