@@ -1,0 +1,14 @@
+﻿@model week4Day3Workshop.Services.UtilityService
+<style>
+    h1{color:brown}
+</style>
+<body>
+    <h1>Welcome to the useful page</h1>
+    @foreach (var color in Model.colors)
+    {
+        <a href="https://localhost:44335/home" style="color: @color; font-size: 30px">@color</a><br />
+    }
+    <br /><br />
+
+</body>
+

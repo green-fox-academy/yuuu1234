@@ -182,7 +182,42 @@ namespace program5
             // The diamond should have as many lines as the number was
             Console.WriteLine("Please enter a number");
             int level3 = int.Parse(Console.ReadLine());
-           
+            if (level3 % 2 == 0)
+            {
+                int up = level3 / 2, down=up;
+   
+                for (int i = 1; i <= up; i++)
+                {
+                    for (int m = 1; m < up - 1; m++)
+                    {
+                        Console.Write(" ");
+                    }
+
+                    for (int j = 1; j < 2 * up - 1; j++)
+                    {
+                        Console.Write("*");
+                    }
+
+                    Console.WriteLine();
+                }
+
+                for (int i = 1; i <= down; i++)
+                {
+                    for (int m = 1; m < i; m++)
+                    {
+                        Console.Write(" ");
+                    }
+                    for (int j = 1; j <=down-i+1; j++)
+                    {
+                        Console.Write("*");
+                    }
+
+                    Console.WriteLine();
+
+                }
+
+
+            }
 
 
             //excercise 31

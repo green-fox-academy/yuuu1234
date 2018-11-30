@@ -1,0 +1,8 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>Welcome</h1>
+<h3>Please add new student here</h3>
+<form asp-controller="Home" method="post" asp-action="AddPerson">
+    name<input type="text" name="Name" />
+    <button type="submit">Add</button>
+</form>
+

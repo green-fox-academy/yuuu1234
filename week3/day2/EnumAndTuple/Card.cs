@@ -24,11 +24,13 @@ namespace EnumAndTuple
           A=1,two,three,four,five,six,seven,eight,nine,ten, J, Q, K
         }
 
+       
         public Card(CardRank rank,CardSuit suit,CardColor color)
         {
             this.Rank = rank;
             this.Color = color;
             this.Suit = suit;
         }
+      
     }
 }

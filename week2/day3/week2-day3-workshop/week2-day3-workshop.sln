@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AircraftsCarrier", "Aircrafts\AircraftsCarrier.csproj", "{D0ED936B-5DF8-474F-867C-CD34163ABE8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week2-day3-workshop", "week2-day3-workshop\week2-day3-workshop.csproj", "{4E36AAE1-BFB3-4C7C-8C46-814980F271E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D0ED936B-5DF8-474F-867C-CD34163ABE8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0ED936B-5DF8-474F-867C-CD34163ABE8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0ED936B-5DF8-474F-867C-CD34163ABE8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0ED936B-5DF8-474F-867C-CD34163ABE8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E36AAE1-BFB3-4C7C-8C46-814980F271E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E36AAE1-BFB3-4C7C-8C46-814980F271E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E36AAE1-BFB3-4C7C-8C46-814980F271E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E36AAE1-BFB3-4C7C-8C46-814980F271E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7B1EA66C-31D7-41E1-9AB1-D08C03042149}
+		SolutionGuid = {4B5BA7F8-6F46-4B17-9829-154CA0391A63}
 	EndGlobalSection
 EndGlobal

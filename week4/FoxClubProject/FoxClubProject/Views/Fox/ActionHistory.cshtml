@@ -1,0 +1,33 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@model FoxClubProject.Services.Fox.FoxService
+@if (Model == null)
+{
+    <h1>No such a fox</h1>
+}
+else
+{
+    <ul>
+        <li><a asp-action="FoxInformation" asp-controller="Fox" asp-route-name="@Model.Name">Information</a></li>
+        <li><a asp-action="NutritionStore" asp-controller="Fox" asp-route-name="@Model.Name">Nutrition Store</a></li>
+        <li><a asp-action="TrickCenter" asp-controller="Fox" asp-route-name="@Model.Name">Trick Center</a></li>
+        <li><a asp-action="ActionHistory" asp-controller="Fox" asp-route-name="@Model.Name">Action History</a></li>
+    </ul>
+    <img src="greenfox.png" alt="green fox">
+    if (Model.ActionHistory.Count != 0)
+    {
+        foreach (var change in Model.ActionHistory)
+        {
+            <p>@change</p>
+        }
+    }
+    else
+    {
+        <p> No actions occured</p>
+    }
+
+
+}
+
+
+
+

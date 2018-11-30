@@ -29,6 +29,8 @@ namespace DisposePattern
             
         }
 
+
+
         public void Dispose()
         {
             Dispose(true);
@@ -43,5 +45,6 @@ namespace DisposePattern
                 fileStream?.Dispose();
             }
         }
+       
     }
 }

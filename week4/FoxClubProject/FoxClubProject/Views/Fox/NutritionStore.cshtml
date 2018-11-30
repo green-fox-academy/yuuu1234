@@ -1,0 +1,34 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@model FoxClubProject.Services.Fox.FoxService
+<ul>
+    <li><a asp-action="FoxInformation" asp-controller="Fox" asp-route-name="@Model.Name">Information</a></li>
+    <li><a asp-action="NutritionStore" asp-controller="Fox" asp-route-name="@Model.Name">Nutrition Store</a></li>
+    <li><a asp-action="TrickCenter" asp-controller="Fox" asp-route-name="@Model.Name">Trick Center</a></li>
+<li><a asp-action="ActionHistory" asp-controller="Fox" asp-route-name="@Model.Name">Action History</a></li>
+<img src="greenfox.png" alt="green fox">
+@if (Model!= null)
+{
+    <form asp-controller="Fox" asp-action="AfterNutrition" asp-route-name="@Model.Name" method="post">
+        <label for="food">Food</label>
+        <select id="food" name="Food">
+            @foreach (var food in Model.AllFood)
+            {
+                <option value="@food">@food</option>
+            }
+        </select>
+        <label for="drink">Drink</label>
+        <select id="drink" name="Drink">
+            @foreach (var drink in Model.AllDrink)
+            {
+                <option value="@drink">@drink</option>
+            }
+        </select>
+        <button type="submit">Change</button>
+    </form>
+}
+else
+{
+    <h1>No such a fox</h1>
+}
+
+

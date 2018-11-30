@@ -1,0 +1,10 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>Welcome to Programmer Fox Club!</h1><br/>
+<p>Please provide a name, so you can associated it to your pet!</p><br/>
+<Form asp-action="ShowName" asp-controller="Home" method="post" >
+    <label for="Name">Name</label>
+    <input type="text"name="Name" id="Name">
+    <button type="submit">Go</button>
+
+</Form>
+

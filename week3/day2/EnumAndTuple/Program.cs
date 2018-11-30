@@ -16,7 +16,7 @@ namespace EnumAndTuple
                 //cars
                 case 1:
                     List<Car> cars = new List<Car>();
-                    int count = 0;
+                    //int count = 0;
                     for (int i = 0; i < 256; i++)
                     {
                         Random random = new Random();
@@ -120,7 +120,7 @@ namespace EnumAndTuple
             {
                 foreach (var l in countOrder)
                 {
-                    if()
+                   
                 }
             }
 

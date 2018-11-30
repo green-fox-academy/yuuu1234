@@ -1,0 +1,34 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@model FoxClubProject.Services.Fox.FoxService
+
+<style>
+    p{white-space: pre-line}
+    .error{color: orangered}
+</style>
+
+
+@if (Model == null)
+{
+    <h1 class="error">This fox is not in the list</h1>
+
+}
+else
+{
+    <ul>
+        <li><a asp-action="FoxInformation" asp-controller="Fox" asp-route-name="@Model.Name">Information</a></li>
+        <li><a asp-action="NutritionStore" asp-controller="Fox" asp-route-name="@Model.Name">Nutrition Store</a></li>
+        <li><a asp-action="TrickCenter" asp-controller="Fox" asp-route-name="@Model.Name">Trick Center</a></li>
+        <li><a asp-action="ActionHistory" asp-controller="Fox" asp-route-name="@Model.Name">Action History</a></li>
+        <img src="greenfox.png" alt="green fox">
+    </ul>
+    <br />
+    <p>This is @Model.Name, He eats @Model.Food and drinks @Model.Drink </p>
+    <br />
+    <h1>Know tricks</h1>
+    <p>@Model.GetTricks()</p><br/>
+    <h1>Action History</h1>
+    for(int i= Model.ActionHistory.Count-1; i>Model.ActionHistory.Count-3;i--)
+    {
+        <p>@Model.ActionHistory[i]</p>
+    }
+}
