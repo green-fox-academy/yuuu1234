@@ -183,11 +183,12 @@ namespace DelegateAndLinq
             foreach (var gender in genderGroup)
             {
                 Dictionary<string, int> ageRange = new Dictionary<string, int>();
-                string gen=gender.Key;
+                //string gen=gender.Key;
                 var bellow21 = swCharactersList
                     .Select(n => n)
-                    .Where(n => n.Gender==gen && n.BirthYear != "unknown" && double.Parse(n.BirthYear.Replace("BBY","")) < 21);
+                    .Where(n => n.Gender==gender.Key && n.BirthYear != "unknown" && double.Parse(n.BirthYear.Replace("BBY","")) < 21);
                 ageRange.Add("below 21", bellow21.Count());
+                /*
                 var between21And40 = swCharactersList
                     .Select(n => n)
                     .Where(n => n.Gender == gen && n.BirthYear != "unknown" &&
@@ -202,6 +203,7 @@ namespace DelegateAndLinq
                     .Select(n => n)
                     .Where(n => n.Gender == gen && n.BirthYear == "unknown");
                 ageRange.Add("unknown",unkonwn.Count());
+                */
                 expected.Add(gender.Key,ageRange);
 
             }

@@ -1,0 +1,15 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Week5Day2.Models.Todo
+<h1>Edit Todo</h1>
+<form asp-action="Update" method="post">
+
+    <label for="description">Todo Description</label>
+    <input type="text" id="description" asp-for="Title" value="@Model.Title" /><br />
+    <label for="urgent">urgent</label>
+    <input type="radio" id="urgent" asp-for="IsUrgent" value="true" /><br />
+    <label for="done">done</label>
+    <input type="radio" id="done" asp-for="IsDone" value="true" /><br />
+    <button type="submit">Submit</button>
+</form>
+
+

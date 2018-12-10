@@ -1,0 +1,18 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<style>
+    p{color: red}
+</style>
+<h1>Welcome to vote, please log in first</h1>
+@if (ViewBag.hastheUser == false)
+{
+    <p>the user or password was wrong</p>
+}
+<form asp-action="CheckLogIn" method="post">
+    <label for="name"> Name</label>
+    <input type="text" id="name" name="name"/><br/>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password"/><br/>
+    <button type="submit">Login</button>
+</form>
+
+

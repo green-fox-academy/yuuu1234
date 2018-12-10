@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Week5Day2.Models.Todo>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<style>
+    table, td, th {
+        border: 1px solid black
+    }
+</style>
+<h1>Todos for today</h1>
+<a asp-controller="Todo" asp-action="Add">Add new todo</a><br />
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>IsUrgent</th>
+            <th>IsDone</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    @foreach (var todo in Model)
+    {
+        <tr>
+            <td>@todo.Id</td>
+            <td>@todo.Title</td>
+            <td>@todo.IsUrgent</td>
+            <td>@todo.IsDone</td>
+            <td>
+                <form asp-action="Delete" asp-controller="Todo" method="post">
+                    <button type="submit" name="deleteId" value="@todo.Id">Delete</button>
+                </form>
+            </td>
+
+        </tr>
+    }
+</table>
+
+

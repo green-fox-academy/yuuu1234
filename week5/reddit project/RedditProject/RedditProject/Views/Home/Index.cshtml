@@ -1,0 +1,92 @@
+﻿@model IEnumerable<RedditProject.Models.Post>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style>
+    table, tr, th, td {
+        border: 1px solid orange
+    }
+
+    button {
+        color: coral
+    }
+
+    p {
+        color: red
+    }
+
+</style>
+@{
+    string method = "get";
+}
+
+<a asp-action="AddNewPost" asp-controller="Home">Submit new post</a><br />
+@if (!string.IsNullOrEmpty(ViewBag.currentUser))
+{
+    <a asp-action="Logout" asp-controller="Home">Log out</a><br />
+    <p>Hello @ViewBag.currentUser</p>
+
+}
+else
+{
+    <a asp-action="Login" asp-controller="Home">Login to vote</a><br />
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.currentUser))
+{
+    method = "post";
+}
+else
+{
+    <p>you can't vote without login</p>
+}
+@if (ViewBag.voteCount >1)
+{
+    <p> sorry, you can only vote once each time</p>
+    method = "get";
+}
+    <div>
+        
+        
+        <h1>Trending Posts</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Votes</th>
+                <th>Up</th>
+                <th>Down</th>
+                <th>Post</th>
+                <th>PostDate</th>
+            </tr>
+            </thead>
+            @foreach (var post in Model)
+            {
+                <form method=@method asp-controller="Home" asp-action="UpdateVote">
+                    <tr>
+                        <td>@post.Vote</td>
+                        <input type="hidden" name="id" value="@post.Id" />
+                        <td><button type="submit" name="symbol" value="+">+</button></td>
+                        <td><button type="submit" name="symbol" value="-">-</button></td>
+                        <td><a href="@post.Url">@post.PostContent</a></td>
+                        <td>@post.PostDate</td>
+                    </tr>
+                </form>
+            }
+
+        </table>
+        @if (ViewBag.Page > 0)
+        {
+            <a href="@Url.Action("Index", new { page = ViewBag.Page - 1 })" 
+               class="btn btn-default">
+                &laquo; Prev
+            </a>
+        }
+        @if (ViewBag.Page < ViewBag.MaxPage)
+        {
+            <a href="@Url.Action("Index", new { page = ViewBag.Page + 1 })" 
+               class="btn btn-default">
+                Next &raquo;
+            </a>
+        }
+
+
+    </div>
