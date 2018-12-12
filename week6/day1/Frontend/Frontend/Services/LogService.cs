@@ -23,15 +23,9 @@ namespace Frontend.Services
 
         public List<Log> ListLog(int? count, int? page)
         {
-            List<Log> result = new List<Log>();
-            if (count != null && page != null)
-            {
-                int tempCount = 0;
-                int stopPosint = (int)count + (int)page;
-                
-               
-            }
+            throw new NotImplementedException();
         }
+
 
         public long logEntriesCount()
         {

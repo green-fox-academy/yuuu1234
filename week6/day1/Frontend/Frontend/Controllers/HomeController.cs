@@ -29,7 +29,7 @@ namespace Frontend.Controllers
 
         [HttpGet("/doubling")]
 
-        public ActionResult<Doubling> Double(double input)
+        public ActionResult<Doubling> Doubling(double input)
         {
             if (string.IsNullOrWhiteSpace(input + ""))
             {
@@ -61,7 +61,7 @@ namespace Frontend.Controllers
         }
 
         [HttpGet("/greeter")]
-        public ActionResult<Greeting> Greet(string name, string title)
+        public ActionResult<Greeting> Greeting(string name, string title)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -78,7 +78,7 @@ namespace Frontend.Controllers
             }
             else
             {
-                var result = new Greeting() { Welcome_Message = $"Oh, hi there {name}, my dear {title}!" }; ;
+                var result = new Greeting() { Name = name, Title = title, Welcome_Message = $"Oh, hi there {name}, my dear {title}!" }; ;
                 Log log = new Log()
                 {
                     CreatedAt = DateTime.Now,
@@ -125,7 +125,7 @@ namespace Frontend.Controllers
                 result = new Until() { UntilNumber = doAction.UntilNumber, Result = _frontendService.UntilSum(doAction.UntilNumber) };
 
             }
-            else if (string.IsNullOrWhiteSpace(doAction.Action))
+            else if (string.IsNullOrWhiteSpace(doAction.UntilNumber+""))
             {
                 return new Until() { Error = "Please provide a number" };
             }
@@ -148,7 +148,6 @@ namespace Frontend.Controllers
         [HttpPost("/arrays")]
         public ActionResult<ArrayHandler> ArrayHandler([FromBody]ArrayHandler input)
         {
-            ArrayHandler result;
             if (input.What.ToLower() == "sum")
             {
                 input.Result = _frontendService.ArraySum(input.Numbers).ToString();
