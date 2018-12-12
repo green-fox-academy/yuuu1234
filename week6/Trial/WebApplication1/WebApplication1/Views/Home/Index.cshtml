@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Planet>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<style>
+    thead, table, tr, td, th {
+        border: 1px solid black;
+    }
+
+    thead {
+        background: chocolate
+    }
+</style>
+@{
+    string method = "post";
+}
+
+@if (ViewBag.Utilization == 0)
+{
+    method = "get";
+    <p>no more people can be moved to the planet</p>
+}
+@if (ViewBag.Utilization ==60)
+{
+    method = "get";
+    <p>Spaceship can not hold more people</p>
+}
+<h1>Space Transporter</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Planet</th>
+            <th>Population</th>
+            <th>Spaceship location</th>
+            <th>People on ship</th>
+        </tr>
+    </thead>
+    @foreach (var planet in Model)
+    {
+        <tr>
+            <td>@planet.Name</td>
+            <td>@planet.Population</td>
+            @foreach (var spaceship in ViewBag.spaceships)
+            {
+                if (spaceship.Planet == planet.Name)
+                {
+                    <form method=@method>
+                        <td>
+                            <button asp-action="ToPlanet" type="submit" name="id" value="@planet.Id">&#8592to planet </button>
+                            <button asp-action="ToSpaceship" type="submit" name="id" value="@planet.Id">to ship&#8594</button>
+
+                        </td>
+                    </form>
+
+                    <td>@spaceship.Utilization</td>
+                }
+                else
+                {
+                    <form method=@method>
+                        <td><button asp-action="MoveToAnotherPlanet" asp-controller="Home" name="id" value="@planet.Id" type="submit">Move here</button></td>
+                    </form>
+                    <td>-</td>
+                }
+            }
+        </tr>
+    }
+
+</table>
