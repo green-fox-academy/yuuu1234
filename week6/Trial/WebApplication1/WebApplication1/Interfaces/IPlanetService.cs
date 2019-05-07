@@ -10,6 +10,8 @@ namespace WebApplication1.Interfaces
     {
         void IncreasePopulation(long id);
         void DecreasePopulation(long id);
+        void ToPlanet(long planetId);
         List<Planet> TopPlanets();
+        List<Planet> GetAllPlanets();
     }
 }

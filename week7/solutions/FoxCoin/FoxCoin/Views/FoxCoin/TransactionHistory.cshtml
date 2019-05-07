@@ -1,0 +1,71 @@
+﻿@using FoxCoin.Services
+@model IEnumerable<Transaction>
+@inject IAccountService accountService
+
+@{
+    ViewBag.Title = "Transaction History";
+    Layout = "_Layout";
+
+    var accounts = accountService.GetAccounts();
+}
+
+<h2>Transaction History</h2>
+
+<form method="get" class="form-inline">
+    <div class="form-group">
+        <label for="senderId">Sender</label>
+        <select id="senderId" name="senderId" class="form-control">
+            <option></option>
+            @foreach (var account in accounts)
+            {
+                var selected = account.Id == ViewBag.senderId;
+
+                <option value="@account.Id" selected="@selected">@account.Username</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="receiverId">Receiver</label>
+        <select id="receiverId" name="receiverId" class="form-control">
+            <option></option>
+            @foreach (var account in accounts)
+            {
+                var selected = account.Id == ViewBag.receiverId;
+
+                <option value="@account.Id" selected="@selected">@account.Username</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="timePeriod">Time Period</label>
+        <select id="timePeriod" name="timePeriod" class="form-control">
+            <option></option>
+            <option value="lastMonth">Last month</option>
+            <option value="lastWeek">Last week</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>Sender</th>
+        <th>Receiver</th>
+        <th>Amount</th>
+        <th>Timestamp</th>
+    </tr>
+    @foreach (var transaction in Model)
+    {
+        <tr>
+            <td>@(transaction.Sender?.Username ?? "[account deleted]")</td>
+            <td>@(transaction.Receiver?.Username ?? "[account deleted]")</td>
+            <td>@transaction.Amount</td>
+            <td>@transaction.Timestamp</td>
+        </tr>
+    }
+</table>

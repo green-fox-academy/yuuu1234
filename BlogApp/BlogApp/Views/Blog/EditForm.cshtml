@@ -1,0 +1,14 @@
+﻿@model CreateEditBlogPostViewModel
+
+@{
+    ViewBag.Title = "Edit post";
+}
+
+<h2>Edit post</h2>
+
+<form asp-controller="Blog" asp-action="Update" method="post">
+    <input asp-for="BlogPost.BlogPostId" type="hidden" />
+    <partial name="BlogPostForm"/>
+    <button type="submit" class="btn btn-primary">Edit</button>
+    <button type="submit" name="action" value="delete" class="btn btn-danger">Delete</button>
+</form>

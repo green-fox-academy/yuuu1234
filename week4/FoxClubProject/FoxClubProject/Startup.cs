@@ -18,6 +18,7 @@ namespace FoxClubProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IFoxService,FoxService>();
+            services.AddSingleton<ITimeService,TimeService>();
             services.AddMvc();
         }
 

@@ -1,0 +1,23 @@
+﻿@model Category
+
+@{
+    ViewBag.Title = "Posts by category";
+}
+
+<h2>Posts by category</h2>
+
+@foreach (var post in Model.BlogPosts)
+{
+    <article>
+        <h3>@post.Title</h3>
+        <p>Category: 
+            <a href="/by-category/@post.CId">
+                @(post.Category?.Name ?? "No category set")
+            </a>
+        </p>
+        <a asp-controller="Blog" asp-action="EditForm" asp-route-id="@post.BlogPostId">edit</a>
+        <p>
+            @post.Content
+        </p>
+    </article>
+}

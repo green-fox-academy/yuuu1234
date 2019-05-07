@@ -1,0 +1,26 @@
+﻿@model IEnumerable<UserAccount>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Account list</h2>
+
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Balance</th>
+        <th></th>
+    </tr>
+    @foreach (var account in Model)
+    {
+        <tr>
+            <td>@account.Username</td>
+            <td>@account.Balance FxC</td>
+            <td>
+                <form asp-controller="Account" asp-action="Delete" method="post">
+                    <button type="submit" name="accountId" value="@account.Id" class="btn btn-danger">x</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

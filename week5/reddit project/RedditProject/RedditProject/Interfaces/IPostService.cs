@@ -8,8 +8,9 @@ namespace RedditProject.Interfaces
 {
     public interface IPostService
     {
-        void UpdateVote(long id, string symbol);
-        void AddNewPost(Post post);
+        Task UpdateVoteAsync(long id, string symbol);
+        Task AddNewPostAsync(Post post);
+        Task<IEnumerable<Post>> GetAllPostsAsync();
         List<Post> RankPosts(List<Post> postsList);
 
     }

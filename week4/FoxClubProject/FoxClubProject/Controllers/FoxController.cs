@@ -10,11 +10,14 @@ namespace FoxClubProject.Controllers
 {
     public class FoxController : Controller
     {
-        private  readonly IFoxService _foxService;
-        
-        public FoxController(IFoxService f)
+        private readonly IFoxService _foxService;
+        private readonly ITimeService _timeService;
+        private readonly DateTime currentTime;
+        public FoxController(IFoxService fox,ITimeService time)
         {
-            this._foxService = f;
+            this._foxService = fox;
+            this._timeService = time;
+            this.currentTime =_timeService.GetStartTime();
         }
 
         [HttpGet("info")]

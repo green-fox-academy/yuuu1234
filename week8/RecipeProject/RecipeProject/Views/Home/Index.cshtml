@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Recipe>
+<style>
+    h3{color: deepskyblue}
+</style>
+<h1>Recipe Collection</h1>
+@foreach (var recipe in Model)
+{
+    <h3>@recipe.Name</h3>
+    <p>@recipe.Description</p>
+}

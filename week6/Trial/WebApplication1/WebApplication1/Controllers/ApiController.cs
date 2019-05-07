@@ -23,7 +23,7 @@ namespace WebApplication1.Controllers
             this._spaceshipService = spaceshipService;
             this._planetService = planetService;
         }
-        [HttpGet("api/top-planets")]
+        [HttpGet("/top-planets")]
         public ActionResult<PlanetsList> TopPlanet()
         {
             var topPlanets = _planetService.TopPlanets();

@@ -13,15 +13,10 @@
     string method = "post";
 }
 
-@if (ViewBag.Utilization == 0)
+@if (ViewBag.move== false)
 {
+    <p>the spaceship can't move or accept people any more</p>
     method = "get";
-    <p>no more people can be moved to the planet</p>
-}
-@if (ViewBag.Utilization ==60)
-{
-    method = "get";
-    <p>Spaceship can not hold more people</p>
 }
 <h1>Space Transporter</h1>
 <table>
@@ -38,27 +33,24 @@
         <tr>
             <td>@planet.Name</td>
             <td>@planet.Population</td>
-            @foreach (var spaceship in ViewBag.spaceships)
+            @if (ViewBag.spaceships.PlanetId == planet.PlanetId)
             {
-                if (spaceship.Planet == planet.Name)
-                {
-                    <form method=@method>
-                        <td>
-                            <button asp-action="ToPlanet" type="submit" name="id" value="@planet.Id">&#8592to planet </button>
-                            <button asp-action="ToSpaceship" type="submit" name="id" value="@planet.Id">to ship&#8594</button>
+            <form method=@method>
+                <td>
+                    <a asp-action="ToPlanet" asp-route-id="@planet.PlanetId">&#8592to planet</a>
+                    <a asp-action="ToSpaceship" asp-route-id="@planet.PlanetId">to ship&#8594</a>
+                </td>
+            </form>
 
-                        </td>
-                    </form>
+            <td>@ViewBag.spaceships.Utilization</td>
+            }
+            else
+            {
+            <form method=@method>
+                <td><button asp-action="MoveHere" asp-route-id="@planet.PlanetId" type="submit">Move here</button></td>
 
-                    <td>@spaceship.Utilization</td>
-                }
-                else
-                {
-                    <form method=@method>
-                        <td><button asp-action="MoveToAnotherPlanet" asp-controller="Home" name="id" value="@planet.Id" type="submit">Move here</button></td>
-                    </form>
-                    <td>-</td>
-                }
+            </form>
+            <td>-</td>
             }
         </tr>
     }

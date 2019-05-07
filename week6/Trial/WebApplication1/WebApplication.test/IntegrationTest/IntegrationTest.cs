@@ -33,7 +33,7 @@ namespace WebApplication.test
             var client = factory.CreateClient();
 
             // Act
-            var responseMessage = await client.GetAsync("/api/top-planets");
+            var responseMessage = await client.GetAsync("/top-planets");
             var content = await responseMessage.Content.ReadAsStringAsync();
 
             var result = JsonConvert.DeserializeObject<PlanetsList>(content);

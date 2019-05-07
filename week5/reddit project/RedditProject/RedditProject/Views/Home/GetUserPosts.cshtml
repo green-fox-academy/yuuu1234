@@ -1,0 +1,9 @@
+﻿@model IEnumerable<RedditProject.Models.Post>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<a asp-action="Index">Main page</a>
+<h1>hello @ViewBag.currentUser</h1>
+<h2>Your posts:</h2>
+@foreach (var post in Model)
+{
+    <a href="@post.Url">@post.PostContent</a><br/>
+}

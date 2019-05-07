@@ -1,0 +1,12 @@
+﻿@model CreateEditBlogPostViewModel
+
+@{
+    ViewBag.Title = "Create a new post";
+}
+
+<h2>Create a new post</h2>
+
+<form asp-controller="Blog" asp-action="Create" method="post">
+    <partial name="BlogPostForm" />
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

@@ -24,11 +24,13 @@
 {
     <a asp-action="Logout" asp-controller="Home">Log out</a><br />
     <p>Hello @ViewBag.currentUser</p>
+    <a asp-action="GetUserPosts">Check my posts</a>
 
 }
 else
 {
     <a asp-action="Login" asp-controller="Home">Login to vote</a><br />
+    <a asp-action="Register" asp-controller="Home">Register</a>
 }
 
 @if (!string.IsNullOrEmpty(ViewBag.currentUser))
@@ -56,6 +58,7 @@ else
                 <th>Down</th>
                 <th>Post</th>
                 <th>PostDate</th>
+                <th>Posted by</th>
             </tr>
             </thead>
             @foreach (var post in Model)
@@ -63,11 +66,12 @@ else
                 <form method=@method asp-controller="Home" asp-action="UpdateVote">
                     <tr>
                         <td>@post.Vote</td>
-                        <input type="hidden" name="id" value="@post.Id" />
+                        <input type="hidden" name="id" value="@post.PostId" />
                         <td><button type="submit" name="symbol" value="+">+</button></td>
                         <td><button type="submit" name="symbol" value="-">-</button></td>
                         <td><a href="@post.Url">@post.PostContent</a></td>
                         <td>@post.PostDate</td>
+                        <td>@post.User.UserName</td>
                     </tr>
                 </form>
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
 using RedditProject.Interfaces;
 using RedditProject.Models;
@@ -17,29 +18,34 @@ namespace RedditProject.Services
             this.applicationContext = applicationContext;
         }
 
-        public void AddNewPost(Post post)
+        public async Task AddNewPostAsync(Post post)
         {
-            applicationContext.Posts.Add(post);
-            applicationContext.SaveChanges();
+            await applicationContext.Posts.AddAsync(post);
+            await applicationContext.SaveChangesAsync();
         }
 
-        public void UpdateVote(long id, string symbol)
+        public async Task<IEnumerable<Post>> GetAllPostsAsync()
         {
-            var post = applicationContext.Posts.Find(id);
+            return await applicationContext.Posts.Include(p => p.User).ToListAsync();
+        }
+        public async Task UpdateVoteAsync(long id, string symbol)
+        {
+            var post = await applicationContext.Posts.FindAsync(id);
             if (symbol == "-")
             {
                 post.Vote--;
-            }else if (symbol == "+")
+            }
+            else if (symbol == "+")
             {
                 post.Vote++;
             }
 
-            applicationContext.SaveChanges();
+            await applicationContext.SaveChangesAsync();
         }
 
         public List<Post> RankPosts(List<Post> postsLists)
         {
-            List<Post> sortedList = postsLists.OrderByDescending(n => n.Vote).ToList();
+            var sortedList = postsLists.OrderByDescending(n => n.Vote).ToList();
             return sortedList;
         }
     }

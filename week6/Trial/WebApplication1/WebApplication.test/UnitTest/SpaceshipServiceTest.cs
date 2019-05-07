@@ -21,7 +21,7 @@ namespace WebApplication.test.UnitTest
             //act
             service.ChangeTheLocation((long) 1);
             //assert
-            Assert.Equal("Moon", context.Spaceships.Find((long)1).Planet);
+            Assert.Equal(1, context.Spaceships.Find((long)1).Max_capacity);
 
         }
 
@@ -73,7 +73,7 @@ namespace WebApplication.test.UnitTest
             builder.UseInMemoryDatabase("EventListingDatabase" + random.Next());
             var context = new ApplicationContext(builder.Options);
             context.AddRange(
-                new Spaceship { Max_capacity = 30, Planet = "mars", Utilization = 20 },
+                new Spaceship { Max_capacity = 30, Utilization = 20 },
                 new Planet {Name = "Moon"}
             );
             context.SaveChanges();

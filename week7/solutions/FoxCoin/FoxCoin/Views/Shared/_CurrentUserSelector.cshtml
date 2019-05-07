@@ -1,0 +1,23 @@
+﻿@using FoxCoin.Services
+@using Microsoft.AspNetCore.Http.Extensions
+@inject IAccountService accountService
+@inject ICurrentAccountService currentAccountService
+
+<p></p>
+<form asp-controller="Account" asp-action="Switch" method="post" class="form-inline">
+    <div class="form-group">
+        <label for="current-user">Current user: </label>
+        <select id="current-user" class="form-control" name="accountId">
+            <option></option>
+            @foreach (var account in accountService.GetAccounts())
+            {
+                bool isSelected = currentAccountService.CurrentAccount?.Id == account.Id;
+
+                <option value="@account.Id" selected="@isSelected">@account.Username</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary">Switch</button>
+
+        <input type="hidden" name="returnUrl" value="@(new Uri(Context.Request.GetDisplayUrl()).AbsolutePath)" />
+    </div>
+</form>

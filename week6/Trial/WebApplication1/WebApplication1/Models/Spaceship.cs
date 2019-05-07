@@ -7,9 +7,12 @@ namespace WebApplication1.Models
 {
     public class Spaceship
     {
-        public long Id { get; set; }
-        public string Planet { get; set; }
+        public long SpaceshipId { get; set; }
+        public Planet Planet { get; set; }
+        public long? PlanetId { get; set; }
         public int Max_capacity { get; set; }
         public int Utilization { get; set; }
+
+
     }
 }

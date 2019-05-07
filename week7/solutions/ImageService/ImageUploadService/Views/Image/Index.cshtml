@@ -1,0 +1,33 @@
+﻿@model List<ImageUploadService.Models.Image>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "Image Upload";
+}
+
+<h1>Image Uploader</h1>
+
+<form asp-controller="Image" asp-action="Upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="formImage" value="" />
+    <button type="submit">Upload</button>
+</form>
+
+<ul>
+    @foreach (var image in Model)
+    {
+        <li>
+            <a asp-controller="Image" asp-action="View" asp-route-id="@image.ImageId">
+                @if (image.ResizedVariants.Any())
+                {
+                    <img src="@image.ResizedVariants.First().Url" alt="" />
+                }
+                else
+                {
+                    <img src="~/placeholder.png" alt="" />
+                }
+            </a>
+            <br />
+            @image.FileName
+        </li>
+    }
+</ul>

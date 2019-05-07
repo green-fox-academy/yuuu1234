@@ -1,0 +1,25 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model RedditProject.Models.User
+<style>
+    p{color: orangered}
+</style>
+@{
+    string method = "post";
+}
+@if (ViewBag.successRegisteration==false)
+{
+    <p>Not valid registration, ensure you enter the same password</p>
+    method = "get";
+}
+<form asp-action="CheckRegisteration" ,method="@method">
+
+    <label for="name">Name</label><br />
+    <input id="name" asp-for="UserName" /><br />
+    <label for="password">Password</label><br />
+    <input id="passwordAgain" asp-for="Password" type="password" /><br />
+    <label for="passwordAgain">Please input password again</label><br />
+    <input id="passwordAgain" name="passwordAgain" type="password" /><br/>
+    <button type="submit">Register</button>
+
+</form>
+

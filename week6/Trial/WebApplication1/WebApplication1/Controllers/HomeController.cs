@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Interfaces;
@@ -9,66 +10,67 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    
     public class HomeController : Controller
     {
-        private readonly ApplicationContext applicationContext;
         private readonly ISpaceshipService _spaceshipService;
         private readonly IPlanetService _planetService;
-        public HomeController(ApplicationContext applicationContext, ISpaceshipService spaceshipService, IPlanetService planetService)
+        public HomeController( ISpaceshipService spaceshipService, IPlanetService planetService)
         {
-            this.applicationContext = applicationContext;
             this._spaceshipService = spaceshipService;
             this._planetService = planetService;
         }
         [HttpGet("/")]
         public IActionResult Index()
         {
-            ViewBag.spaceships = applicationContext.Spaceships;
-            return View(applicationContext.planets.ToList());
+       
+            ViewBag.spaceships = _spaceshipService.GetSpaceship();
+            return View(_planetService.GetAllPlanets());
         }
 
         [HttpPost("/movehere/{id}")]
-        public IActionResult MoveToAnotherPlanet(long id)
+        public IActionResult MoveHere(long id)
         {
             _spaceshipService.ChangeTheLocation(id);
-            ViewBag.spaceships = applicationContext.Spaceships;
-            return View(nameof(Index), applicationContext.planets.ToList());
+            ViewBag.spaceships = _spaceshipService.GetSpaceship();
+            return View(nameof(Index),_planetService.GetAllPlanets());
         }
-        [HttpPost("/toplanet/{id}")]
+        [HttpGet("/toplanet/{id}")]
         public IActionResult ToPlanet(long id)
         {
-            if (_spaceshipService.GetUltilization() == 0)
+            if (_spaceshipService.AbleToMoveToPlanet())
             {
-                ViewBag.spaceships = applicationContext.Spaceships;
-                ViewBag.Utilization = 0;
-                return View(nameof(Index), applicationContext.planets.ToList());
+                _planetService.ToPlanet(id);
+                ViewBag.move = true;
+                ViewBag.spaceships = _spaceshipService.GetSpaceship();
+                return View(nameof(Index),_planetService.GetAllPlanets());
             }
             else
             {
-                _spaceshipService.DecreaseUltilization();
-                _planetService.IncreasePopulation(id);
-                ViewBag.spaceships = applicationContext.Spaceships;
-                return View(nameof(Index), applicationContext.planets.ToList());
+                ViewBag.move = false;
+                ViewBag.spaceships = _spaceshipService.GetSpaceship();
+                return View(nameof(Index),_planetService.GetAllPlanets());
             }
             
+
         }
-        [HttpPost("/toship/{id}")]
+        [HttpGet("/toship/{id}")]
         public IActionResult ToSpaceship(long id)
         {
-            if (_spaceshipService.GetUltilization() ==60)
+            if (_spaceshipService.AbleToMoveToShip())
             {
-                ViewBag.spaceships = applicationContext.Spaceships;
-                ViewBag.Utilization = 60;
-                return View(nameof(Index), applicationContext.planets.ToList());
+                _spaceshipService.ToSpaceship();
+                ViewBag.move = true;
+                ViewBag.spaceships = _spaceshipService.GetSpaceship();
+                return View(nameof(Index), _planetService.GetAllPlanets());
             }
             else
             {
-                _spaceshipService.IncreaseUltilization();
-                _planetService.DecreasePopulation(id);
-                ViewBag.spaceships = applicationContext.Spaceships;
-                return View(nameof(Index), applicationContext.planets.ToList());
+                ViewBag.move = false;
+                ViewBag.spaceships = _spaceshipService.GetSpaceship();
+                return View(nameof(Index), _planetService.GetAllPlanets());
             }
-            
+
         }
 
         public IActionResult About()

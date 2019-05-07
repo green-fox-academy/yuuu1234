@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FoxClubProject.Interfaces;
 using FoxClubProject.Repository;
 using Microsoft.EntityFrameworkCore.Query.ExpressionTranslators.Internal;
-
+using FoxClubProject.Repository;
 namespace FoxClubProject.Services.Fox
 {
     public class FoxService : IFoxService
@@ -19,7 +19,8 @@ namespace FoxClubProject.Services.Fox
         public int DrinkCapacity { get; set; }
         public  string[] AllTricks=new []{"python","Java","Html","c#"};
         public  string[] AllFood= new[] { "pizza", "salad", "chicken", "cookie" };
-        public  string[] AllDrink=new []{ "lemmonade","coke","tea","coffe"};
+        public  string[] AllDrink=new []{ "lemmonade","coke","tea","cooffe"};
+        public static DateTime StatTime { get; set; }
         public FoxService()
         {
             this.Food = "pizza";
@@ -28,6 +29,8 @@ namespace FoxClubProject.Services.Fox
             this.DrinkCapacity = 10;
             this.Tricks = new List<string>();
             this.ActionHistory = new List<string>();
+            StatTime = AllFoxes.StartTime;
+
         }
         public string GetTricks()
         {
@@ -111,6 +114,11 @@ namespace FoxClubProject.Services.Fox
                     }
                 }
             }
+        }
+
+        public DateTime GetCurrentTime()
+        {
+            return DateTime.Now;
         }
 
 

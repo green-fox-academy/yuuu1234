@@ -21,7 +21,7 @@ namespace RedditProject.Migrations
 
             modelBuilder.Entity("RedditProject.Models.Post", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("PostId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -31,16 +31,20 @@ namespace RedditProject.Migrations
 
                     b.Property<string>("Url");
 
+                    b.Property<long?>("UserId");
+
                     b.Property<long>("Vote");
 
-                    b.HasKey("Id");
+                    b.HasKey("PostId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("RedditProject.Models.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -48,9 +52,16 @@ namespace RedditProject.Migrations
 
                     b.Property<string>("UserName");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RedditProject.Models.Post", b =>
+                {
+                    b.HasOne("RedditProject.Models.User", "User")
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

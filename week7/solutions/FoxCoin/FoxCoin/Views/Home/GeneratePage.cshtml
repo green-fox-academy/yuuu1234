@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<style>
+    .center {
+        text-align: center;
+    }
+</style>
+
+<h2>Generate FoxCoin</h2>
+<div class="center">
+    @if (TempData["generatedValue"] != null)
+    {
+        <h3 class="text-success">✔ @TempData["generatedValue"] FxC Generated</h3>
+    }
+    <form method="post">
+        <button>
+            <img src="~/foxcoin.png" alt="Alternate Text" width="500" />
+        </button>
+    </form>
+</div>

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace FoxClubProject.Interfaces
 {
-    interface ITime
+    public interface ITimeService
     {
+        DateTime GetStartTime();
+
     }
 }

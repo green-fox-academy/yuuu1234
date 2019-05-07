@@ -1,0 +1,12 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Recipe
+<h1>Create a new Recipe</h1>
+<form>
+    <label for="name">Name</label><br/>
+    <input id="name" asp-for="Name" style="width: 800px"/><br/>
+    <label for="description">Description</label><br/>
+    <input id="description" asp-for="Description" style="width: 800px" rows="3"/><br/>
+    <label for="ingredients">Ingredients</label><br/>
+    <input id="ingredients" style="width: 800px" line-height="50em"/><br/>
+</form>
+
