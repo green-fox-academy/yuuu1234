@@ -18,9 +18,9 @@ class Ship():
             self.crew.append(Pirate())
 
     def show_ship_info(self):
-        alive_msg = " " if self.captain.is_alive == True else "not "
-        "alive"
-        return f"the capitain consume {self.captain.rum_counter} rums and he is" + alive_msg + " alive" + f"the ship has {self.alive_crew} crew"
+        self.calculate_alive_crew()
+        return f"the captain consume {self.captain.rum_counter} rums and he is {self.captain.is_alive} alive and " \
+            f"{self.captain.asleep} passed out and has {self.alive_crew} crew"
 
     def calculate_alive_crew(self):
         for i in self.crew:

@@ -1,19 +1,26 @@
 import random
 
 
-class Pirate():
+class Pirate:
     def __init__(self):
         self.rum_counter = 0
         self.is_alive = True
+        self.asleep = False
 
     def drink_some_rum(self):
+        if not self.is_alive:
+            print("he is dead")
+            return None
         self.rum_counter += 1
 
     def hows_it_going_mate(self):
-        if (self.rum_counter > 0 and self.rum_counter < 4):
+        if not self.is_alive:
+            print("he is dead")
+            return None
+        if self.rum_counter < 5:
             print("Pour me anudder!")
         else:
-            self.state="Passed out"
+            self.asleep = True
             print("Arghh, I'ma Pirate. How d'ya d'ink its goin?")
 
     def die(self):
@@ -24,12 +31,13 @@ class Pirate():
         # 1 means the pirate dies
         # 2 means the enemy dies
         # 3 means both die
-        num = random.randint(1, 4)
-        if (enemy.is_alive == True and self.is_alive == True):
-            if (num == 1):
-                self.is_alive = False
-            elif (num == 2):
-                enemy.is_alive=False
+        num = random.randint(1, 3)
+
+        if enemy.is_alive and self.is_alive:
+            if num == 1:
+                self.die()
+            elif num == 2:
+                enemy.die()
             else:
-                self.is_alive=False
-                enemy.is_alive=False
+                self.asleep = True
+                enemy.asleep = True
