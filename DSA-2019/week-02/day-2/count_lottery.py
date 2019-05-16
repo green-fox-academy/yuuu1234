@@ -23,3 +23,4 @@ def five_most_frequent(file_name, top_num):
 
 print(
     five_most_frequent("C:\\Users\\Yu_Wang\\projects\\greenfox\\yuuu1234\\DSA-2019\\week-02\\day-2\\lotterty-file", 5))
+
