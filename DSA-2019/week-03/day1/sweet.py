@@ -1,5 +1,5 @@
 class Sweet:
-    def __init__(self, price, amount):
-        self.price = price
-        self.amount = amount
+    def __init__(self):
+        self.price = 0
+        self.amount =0
         self.type = None
