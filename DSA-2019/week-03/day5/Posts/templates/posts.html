@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>posts</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+</head>
+<body>
+<h1>Posts</h1>
+<article>
+    {% for post in posts %}
+      {% set author_id = post["author"] %}
+      {% set author_name= "" %}
+      {% set liked_by="" %}
+    {% set ns =namespace(author_name="",liked_by="") %}
+      {% for author in authors %}
+        {% if author["id"] ==author_id %}
+          {% set ns.author_name=author["name"] %}
+          {% set ns.liked_by=author["like"] | join(", ") %}
+        {% endif %}
+      {% endfor %}
+    <h1>{{ns.author_name}}#{{post["id"]}}</h1>
+    <p>{{post["content"]}}</p>
+    <p>Liked by {{ns.liked_by}}</p>
+    {% endfor %}
+</article>
+</body>
+</html>
