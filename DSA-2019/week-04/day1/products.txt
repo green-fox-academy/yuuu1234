@@ -1,0 +1,16 @@
+select * from products;
+
+select name,price from products
+order by price desc
+limit 3;
+
+select name,price from products
+order by price asc
+limit 2 offset 3;
+
+select round(avg(price),2) from products
+where category='Electronics';
+
+select sum(price) as total_toys_price 
+from products
+where category='Toys';

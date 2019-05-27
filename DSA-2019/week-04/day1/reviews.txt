@@ -1,0 +1,59 @@
+select * from reviews;
+
+select * from products;
+
+select * from users;
+
+select round(avg(rating),2) as avg_rat, max(rating) as max_rat, min(rating) as min_rat
+from reviews;
+
+select name,rating 
+from products 
+join reviews
+on reviews.id=products.id
+order by rating desc
+limit 1;
+
+select name,rating 
+from products 
+join reviews
+on reviews.id=products.id
+order by rating asc
+limit 1;
+
+select count(*) as rating3_or_no_comment from reviews
+where rating=3 or comment is null;
+
+select name from products
+left join reviews 
+on products.id=reviews.product_id
+where product_id is null;
+
+select username, count(*) as user_count from reviews
+left join users
+on reviews.user_id=users.id
+group by username
+order by user_count desc
+limit 1;
+
+select name, round(avg(rating),2) from products
+left join reviews 
+on products.id=reviews.product_id
+group by name;
+
+select '2019-05-27'::date-(
+select date from reviews
+order by date desc
+limit 1) as the_difference_between_date;
+
+
+
+
+
+
+
+
+
+
+
+

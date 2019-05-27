@@ -1,0 +1,10 @@
+select * from employees
+
+alter table employees
+add column department varchar(50);
+
+alter table employees
+drop column username;
+
+alter table employees
+rename salary to employee_salary;

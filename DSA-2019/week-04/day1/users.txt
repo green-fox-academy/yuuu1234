@@ -1,0 +1,36 @@
+Select * from users
+where email like '%.com'
+and EXTRACT(year FROM date_of_registration)=2018
+and country='China';
+
+select count(*) as users_number from users;
+
+select count(*) as users_number_2019
+from users 
+where 
+EXTRACT(year FROM date_of_registration)=2019;
+
+select count(*) as users_number_Jan
+from users 
+where 
+EXTRACT(month FROM date_of_registration)=01;
+
+select Country,count(*) as user_num_in_country
+from users
+Group by country 
+
+Select 
+COUNT(*) filter (where gender = 'Female') as Female, 
+COUNT(*) filter (where gender = 'Male') as Male,
+COUNT(*) filter (where gender = 'Female') / COUNT(*) filter (where gender = 'Male') as ratio
+FROM users;
+
+SELECT * FROM users
+WHERE username is null or 
+email is null or 
+date_of_registration is null or
+first_name is null or
+last_name is null or
+country is null or
+gender is  null;
+
