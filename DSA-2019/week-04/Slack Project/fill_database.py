@@ -3,7 +3,7 @@ import psycopg2
 from data_manipulation import get_all_users, get_all_message
 
 all_messages_from_db = []
-user_message = []
+answers = []
 connection = psycopg2.connect(
     host='localhost',
     database='slack',
@@ -30,6 +30,7 @@ message_with_most_reactions = "SELECT message,reactions.message_id, count(reacti
                               "ORDER BY reaction_count DESC LIMIT 1"
 the_most_active_day = "SELECT DATE(sent_at) AS the_date, COUNT(*) AS date_count FROM messages GROUP BY the_date" \
                       " ORDER BY date_count DESC LIMIT 1  "
+
 # fill in user table
 # for user in get_all_users():
 #     cursor.execute(insert_users_query, (user,))
@@ -61,22 +62,23 @@ the_most_active_day = "SELECT DATE(sent_at) AS the_date, COUNT(*) AS date_count 
 cursor.execute(find_most_sent_users_query)
 result = cursor.fetchall()[0]
 print(f"User {result[0]} sent most messages to the thanks channel with {result[1]} times")
-
+answers.append(f"User {result[0]} sent most messages to the thanks channel with {result[1]} times")
 cursor.execute(find_most_used_emoji_query)
 result = cursor.fetchall()[0]
 print(f"The most used emoji is {result[0]} which has been used {result[1]} times")
+answers.append(f"The most used emoji is {result[0]} which has been used {result[1]} times")
 
 cursor.execute(people_react_to_most_messages_query)
 result = cursor.fetchall()[0]
 print(f"The people {result[0]} reacted to the most messages with {result[1]} times")
-
+answers.append(f"The user {result[0]} reacted to the most messages with {result[1]} times")
 cursor.execute(message_with_most_reactions)
 result = cursor.fetchall()[0]
 print(f"The message {result[0]} was reacted most with {result[2]} times")
-
 cursor.execute(the_most_active_day)
 result = cursor.fetchall()[0]
 print(f"The most active day is {result[0]} with {result[1]} posted messages")
+answers.append(f"The most active day is {result[0]} with {result[1]} posted messages")
 
 
 def get_messages_from_db():
@@ -86,6 +88,27 @@ def get_messages_from_db():
     result = list(rows)
     return result
 
+
+def get_relationship_reactions():
+    cursor.execute(
+        "select reactions.user_id, messages.user_id from reactions left join messages on reactions.message_"
+        "id=messages.id")
+    rows = cursor.fetchall()
+    with open("reactions.csv", "w") as f:
+        for r in rows:
+            f.write(f"{r[0]},{r[1]}\n")
+
+
+def get_relationship_mentions():
+    cursor.execute(
+        "select mentions.user_id, messages.user_id from mentions left join messages on mentions.message_id=messages.id")
+    rows = cursor.fetchall()
+    with open("mentions.csv", "w") as f:
+        for r in rows:
+            f.write(f"{r[0]},{r[1]}\n")
+
+get_relationship_mentions()
+get_relationship_reactions()
 
 all_messages_from_db = get_messages_from_db().copy()
 

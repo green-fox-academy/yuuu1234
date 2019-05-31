@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q&A</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<h1>Simple Q & A</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card card-flip h-100">
+                <div class="card-front text-white bg-dark">
+                    <div class="card-body">
+                        <i class="fa fa-search fa-5x float-right"></i>
+                        <h3 class="card-title">Question</h3>
+                        <p class="card-text">Who sent the most messages to the thanks channel?</p>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body">
+                        <h3 class="card-title">Answer</h3>
+                        <p class="card-text">{{answers[0]}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card card-flip h-100">
+                <div class="card-front text-white bg-warning">
+                    <div class="card-body">
+                        <i class="fa fa-search-plus fa-5x float-right"></i>
+                        <h3 class="card-title">Question</h3>
+                        <p class="card-text">Which emoji is the most common as reaction in the thanks channel?</p>
+                    </div>
+                </div>
+                <div class="card-back bg-dark text-white">
+                    <div class="card-body">
+                        <h3 class="card-title">Answer</h3>
+                        <p class="card-text">{{answers[1]}}</p>
+                        <img style="width:30px;height30px" src="static/green_heart.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card card-flip h-100">
+                <div class="card-front text-white bg-primary">
+                    <div class="card-body">
+                        <i class="fa fa-arrow-circle-right fa-5x float-right"></i>
+                        <h3 class="card-title">Question</h3>
+                        <p class="card-text">Who reacted to the most messages?</p>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body text-primary">
+                        <h3 class="card-title">Answer</h3>
+                        <p class="card-text">{{answers[2]}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card card-flip h-100">
+                <div class="card-front text-white bg-primary">
+                    <div class="card-body">
+                        <i class="fa fa-arrow-circle-right fa-5x float-right"></i>
+                        <h3 class="card-title">Question</h3>
+                        <p class="card-text">Which day was the most active in the channel?</p>
+                    </div>
+                </div>
+                <div class="card-back bg-white">
+                    <div class="card-body text-primary">
+                        <h3 class="card-title">Answer</h3>
+                        <p class="card-text">{{answers[3]}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

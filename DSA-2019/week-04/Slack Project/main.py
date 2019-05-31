@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from fill_database import all_messages_from_db
+from fill_database import all_messages_from_db, answers
 
 app = Flask(__name__)
 
@@ -14,6 +14,11 @@ def messages():
 def get_user_message(user_id):
     messages = get_messages_by_user(user_id)
     return render_template("user_message.html", messages=messages, user=user_id)
+
+
+@app.route("/warmup")
+def get_answer():
+    return render_template("warmup.html", answers=answers)
 
 
 def get_messages_by_user(user_id):
