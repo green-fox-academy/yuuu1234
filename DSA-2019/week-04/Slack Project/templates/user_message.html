@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<h1>{{user}}'s messages</h1>
+<div class="container">
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th>Time Stamp</th>
+            <th>Text</th>
+            <th>Channel</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+        <tr>
+            <td>{{message[0]}}</td>
+            <td>{{message[1]}}</td>
+            <td>{{message[2]}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
